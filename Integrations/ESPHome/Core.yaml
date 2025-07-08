@@ -431,6 +431,7 @@ select:
       - Temperature
       - Food
       - Ooni
+      - Test 00
 
 switch:
   - platform: factory_reset
