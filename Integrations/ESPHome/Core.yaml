@@ -337,7 +337,7 @@ sensor:
               id(tempRangeCheck).execute();
 
   - platform: ntc
-    id: ntc_sensor
+    id: ntc_ooni_sensor
     name: Ooni Probe
     sensor: resistance_sensor
     calibration:
@@ -425,7 +425,6 @@ select:
       - Temperature
       - Food
       - Ooni
-    
 
 switch:
   - platform: factory_reset
@@ -531,6 +530,8 @@ script:
             current_temp = id(temp_probe).state;
           } else if (selected_probe == "Food") {
             current_temp = id(ntc_sensor).state;
+          } else if (selected_probe == "Ooni") {
+            current_temp = id(ntc_ooni_sensor).state;
           } else {
             ESP_LOGW("custom", "No valid temperature probe selected.");
             return;
