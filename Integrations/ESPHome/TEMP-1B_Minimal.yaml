@@ -45,8 +45,10 @@ esphome:
 
                       if (selected_probe == "Temperature") {
                         current_temp = id(temp_probe).state;
-                      } else {
+                      } else if (selected_probe == "Food") {
                         current_temp = id(ntc_sensor).state;
+		      else {
+		        current_temp = id(ntc_ooni_sensor).state;
                       }
 
                       // Check temperature difference
