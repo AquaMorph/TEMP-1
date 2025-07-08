@@ -74,7 +74,7 @@ esphome:
     - light.turn_off: rgb_light
 
 dashboard_import:
-  package_import_url: github://ApolloAutomation/TEMP-1/Integrations/ESPHome/TEMP-1B_Minimal.yaml
+  package_import_url: github://AquaMorph/TEMP-1/Integrations/ESPHome/TEMP-1B_Minimal.yaml@ooni-dev
   import_full_config: false
 
 safe_mode:
