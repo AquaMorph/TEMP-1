@@ -155,7 +155,7 @@ number:
     restore_value: true
     initial_value: 125.0
     min_value: -55.0
-    max_value: 300.0
+    max_value: 600.0
     entity_category: "CONFIG"
     unit_of_measurement: "°C"
     optimistic: true
