@@ -284,7 +284,11 @@ sensor:
             return NAN;
           }
 
-          return x - id(dallas_temperature_offset).state;
+          if (id(temp_probe_select).state == "Ooni") {
+            return NAN;
+          }
+
+	  return x - id(dallas_temperature_offset).state;
     on_value:
       if:
         condition:
@@ -331,6 +335,31 @@ sensor:
         then:
           - lambda: |-
               id(tempRangeCheck).execute();
+
+  - platform: ntc
+    id: ntc_sensor
+    name: Ooni Probe
+    sensor: resistance_sensor
+    calibration:
+      b_constant: 3950
+      reference_temperature: 25°C
+      reference_resistance: 100kOhm
+    filters:
+      - lambda: |-
+          // If the Dallas sensor is selected, return NaN (not a number)
+          if (id(temp_probe_select).state == "Temperature") {
+            return NAN; // Override with NaN
+          }
+          // Otherwise, subtract the temperature offset
+          return x - id(ntc_temperature_offset).state;
+    on_value:
+      if:
+        condition:
+          switch.is_on: alarm_outside_temp_range
+        then:
+          - lambda: |-
+              id(tempRangeCheck).execute();
+
 
   - platform: adc
     pin: 
