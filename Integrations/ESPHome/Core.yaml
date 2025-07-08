@@ -395,7 +395,7 @@ select:
     options:
       - Temperature
       - Food
-    
+      - Test 00
 
 switch:
   - platform: factory_reset
