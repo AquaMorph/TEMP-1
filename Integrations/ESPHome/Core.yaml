@@ -313,7 +313,7 @@ sensor:
     name: Food Probe
     sensor: resistance_sensor
     calibration:
-      b_constant: 3950
+      b_constant: 13682.9
       reference_temperature: 25°C
       reference_resistance: 100kOhm
     filters:
